@@ -162,7 +162,7 @@ module.exports = {
             ),
           ).event.data[0],
         );
-        // https://reefscan.com/block/?blockNumber=118307
+        // https://explorer.snapr.com/block/?blockNumber=118307
         const name = '';
         const bytecode = extrinsic.args[0];
         const value = extrinsic.args[1];

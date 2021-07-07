@@ -1,15 +1,15 @@
 export const network = {
-  id: 'reef-testnet',
-  name: 'Reef Testnet',
-  tokenSymbol: 'REEF',
+  id: 'snapr-testnet',
+  name: 'snapr testnet',
+  tokenSymbol: 'SNAPR',
   tokenDecimals: 18,
   ss58Format: 42,
   coinGeckoDenom: undefined,
-  nodeWs: 'wss://rpc-testnet.reefscan.com/ws',
-  backendWs: 'wss://testnet.reefscan.com/api/v3',
-  backendHttp: 'https://testnet.reefscan.com/api/v3',
-  verificatorApi: 'https://testnet.reefscan.com/api/verificator',
+  nodeWs: 'wss://rpc-testnet.explorer.snapr.com/ws',
+  backendWs: 'wss://testnet.explorer.snapr.com/api/v3',
+  backendHttp: 'https://testnet.explorer.snapr.com/api/v3',
+  smartContractVerifierApi: 'https://testnet.explorer.snapr.com/api/smart-contract-verifier',
   googleAnalytics: '',
-  theme: '@/assets/scss/themes/reef.scss',
+  theme: '@/assets/scss/themes/snapr.scss',
 }
 export const paginationOptions = [10, 20, 50, 100]

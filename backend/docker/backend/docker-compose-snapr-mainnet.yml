@@ -2,12 +2,12 @@ version: '3.7'
 
 services:
   #
-  # reef node
+  # snapr node
   #
   substrate-node:
-    image: reef-node-tesnet/latest
+    image: snapr-mainnet/latest
     hostname: substrate-node
-    build: ./reef-node-tesnet
+    build: ./snapr-mainnet
     volumes:
       - 'substrate-data:/data'
     ports:
@@ -16,7 +16,7 @@ services:
       - '9944:9944'
     expose:
       - '9944'
-    command: -d /data --chain /data/chain_spec_testnet.json --pruning=archive --rpc-cors "*" --ws-port 9944 --port 30333 --unsafe-ws-external --no-prometheus --name 'Reef explorer' --telemetry-url 'wss://telemetry.polkadot.io/submit/ 0'
+    command: -d /data --chain /data/chain_spec_mainnet.json --pruning=archive --rpc-cors "*" --ws-port 9944 --port 30333 --unsafe-ws-external --no-prometheus --name snapr-systems-explorer --telemetry-url 'wss://telemetry.snapr.systems/submit/ 0'
     restart: always
 
   #
@@ -29,10 +29,10 @@ services:
       - 'db-data:/var/lib/postgresql/data'
       - './sql/backend.sql:/docker-entrypoint-initdb.d/backend.sql'
     environment:
-      POSTGRES_USER: 'reef'
-      POSTGRES_PASSWORD: 'reef'
+      POSTGRES_USER: 'snapr'
+      POSTGRES_PASSWORD: 'snapr'
     healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U reef']
+      test: ['CMD-SHELL', 'pg_isready -U snapr']
       interval: 5s
       timeout: 5s
       retries: 5
@@ -47,7 +47,7 @@ services:
       - 'postgres'
     restart: always
     environment:
-      HASURA_GRAPHQL_DATABASE_URL: postgres://reef:reef@postgres:5432/reef
+      HASURA_GRAPHQL_DATABASE_URL: postgres://snapr:snapr@postgres:5432/snapr
       HASURA_GRAPHQL_ENABLE_CONSOLE: 'false' # set to "false" to disable console
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
       ## uncomment next line to set an admin secret
@@ -63,24 +63,23 @@ services:
     depends_on:
       - 'postgres'
       - 'substrate-node'
-    restart: always
+    restart: on-failure
     environment:
       - NODE_ENV=production
       - WS_PROVIDER_URL=ws://substrate-node:9944
-      - SUBSTRATE_NETWORK=reef
+      - SUBSTRATE_NETWORK=snapr
       # - CRAWLER_BLOCK_LISTENER_DISABLE=true
       # - CRAWLER_BLOCK_HARVESTER_DISABLE=true
 
-
   #
-  # Contract verificator API
+  # smart-contract-verifier api
   #
-  verificator-api:
-    image: verificator-api:latest
+  smart-contract-verifier-api:
+    image: smart-contract-verifier-api:latest
     ports:
       - '8000:8000'
     build:
-      context: ../../../verificator-api
+      context: ../../../smart-contract-verifier-api
       dockerfile: Dockerfile
     depends_on:
       - 'postgres'
@@ -91,12 +90,12 @@ services:
       - RECAPTCHA_SECRET=6LfNcPIaAAAAADSldnLXXxSrXIYH532l0cSsfDEU
 
   #
-  # Contract verificator
+  # smart-contract-verifier
   #
-  verificator:
-    image: verificator:latest
+  smart-contract-verifier:
+    image: smart-contract-verifier:latest
     build:
-      context: ../../../verificator
+      context: ../../../smart-contract-verifier
       dockerfile: Dockerfile
     depends_on:
       - 'postgres'

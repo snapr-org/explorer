@@ -13,15 +13,19 @@
           <div class="col-lg-6 text-lg-right">
             <ul class="list-inline">
               <li class="list-inline-item">
-                <a href="https://reef.finance" target="_blank">Website</a>
+                <a href="https://snapr.org" target="_blank">
+                  website
+                </a>
               </li>
               <li class="list-inline-item">
-                <a href="https://docs.reef.finance" target="_blank">Docs</a>
+                <a href="https://snapr.org/docs/introduction" target="_blank">
+                  docs
+                </a>
               </li>
               <li class="list-inline-item">
-                <a href="https://github.com/reef-defi" target="_blank"
-                  >GitHub</a
-                >
+                <a href="https://github.com/snapr-org" target="_blank">
+                  github
+                </a>
               </li>
             </ul>
           </div>

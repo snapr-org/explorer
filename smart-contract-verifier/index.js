@@ -9,10 +9,10 @@ const loggerOptions = {};
 // Configuration
 const pollingTime = 30 * 1000; // 30 seconds
 const postgresConnParams = {
-  user: process.env.POSTGRES_USER || 'reef',
+  user: process.env.POSTGRES_USER || 'snapr',
   host: process.env.POSTGRES_HOST || 'postgres',
-  database: process.env.POSTGRES_DATABASE || 'reef',
-  password: process.env.POSTGRES_PASSWORD || 'reef',
+  database: process.env.POSTGRES_DATABASE || 'snapr',
+  password: process.env.POSTGRES_PASSWORD || 'snapr',
   port: parseInt(process.env.POSTGRES_PORT) || 5432,
 };
 
@@ -238,7 +238,7 @@ const processVerificationRequest = async (request, client) => {
 };
 
 const main = async () => {
-  logger.info(loggerOptions, `Starting contract verificator`);
+  logger.info(loggerOptions, `Starting smart-contract-verifier`);
   logger.info(loggerOptions, `Connecting to db`);
   const client = await getClient();
   logger.info(loggerOptions, `Processing pending requests`);
@@ -248,7 +248,7 @@ const main = async () => {
   }
   logger.info(loggerOptions, `Disconnecting from db`);
   await client.end();
-  logger.info(loggerOptions, `Contract verificator finished, sleeping ${pollingTime / 1000}s`);
+  logger.info(loggerOptions, `Completed smart-contract-verifier, sleeping ${pollingTime / 1000}s`);
   setTimeout(
     () => main(),
     pollingTime,
@@ -257,5 +257,5 @@ const main = async () => {
 
 main().catch((error) => {
   logger.error(loggerOptions, `Main error: ${error}`);
-  logger.error(loggerOptions, `Contract verificator stopped!`);
+  logger.error(loggerOptions, `Stopped smart-contract-verifier`);
 });

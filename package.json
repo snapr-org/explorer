@@ -1,23 +1,23 @@
 {
   "private": true,
-  "name": "reef-explorer",
-  "description": "Reef block explorer",
+  "name": "explorer",
+  "description": "snapr block explorer",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reef-defi/reef-explorer.git"
+    "url": "git+https://github.com/snapr-org/explorer.git"
   },
   "keywords": [
     "blockchain",
-    "polkadot",
+    "snapr",
     "substrate"
   ],
-  "author": "Mario Pino Uceda",
+  "author": "snapr developers <https://snapr.org>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/reef-defi/reef-explorer/issues"
+    "url": "https://github.com/snapr-org/explorer/issues"
   },
-  "homepage": "https://github.com/reef-defi/reef-explorer#readme",
-  "workspaces": ["frontend", "backend", "verificator-api", "verificator"],
+  "homepage": "https://github.com/snapr-org/explorer#readme",
+  "workspaces": ["frontend", "backend", "smart-contract-verifier-api", "smart-contract-verifier"],
   "scripts": {}
  }
  

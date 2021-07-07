@@ -40,12 +40,12 @@ export default {
   },
   head() {
     return {
-      title: 'Explorer | Reef Network',
+      title: 'snapr | explorer',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content: 'Reef Chain is an EVM compatible chain for DeFi',
+          content: 'decentralised economy with ♥ for people, by people',
         },
       ],
     }

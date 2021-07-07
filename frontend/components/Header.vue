@@ -2,8 +2,8 @@
   <b-navbar toggleable="xl">
     <b-container class="px-sm-3">
       <b-navbar-brand>
-        <nuxt-link to="/" class="navbar-brand" title="Reef block explorer">
-          <img class="logo" src="/img/reef-logo-new.svg" />
+        <nuxt-link to="/" class="navbar-brand" title="snapr block explorer">
+          <img class="logo" src="/img/u2665-ad2d6f.svg" />
           <span class="explorer">SCAN</span>
         </nuxt-link>
       </b-navbar-brand>
@@ -30,10 +30,9 @@
         <!-- <a
           v-b-tooltip.hover
           :title="network.name"
-          href="https://docs.reef.finance/docs/developers/networks/"
+          href="https://snapr.org/docs/developers/networks"
           target="_blank"
-          class="d-none d-lg-block d-xl-block"
-        >
+          class="d-none d-lg-block d-xl-block">
           <span class="badge badge-pill badge-primary2 network">
             <font-awesome-icon icon="plug" />
             {{ network.name }}
@@ -44,12 +43,12 @@
             <font-awesome-icon icon="plug" />
             {{ network.name }}
           </template>
-          <b-dropdown-item href="https://testnet.reefscan.com"
-            >Reef Testnet</b-dropdown-item
-          >
-          <b-dropdown-item href="https://reefscan.com"
-            >Reef Mainnet</b-dropdown-item
-          >
+          <b-dropdown-item href="https://testnet.explorer.snapr.com">
+            snapr testnet
+          </b-dropdown-item>
+          <b-dropdown-item href="https://explorer.snapr.com">
+            snapr mainnet
+          </b-dropdown-item>
         </b-dropdown>
       </b-collapse>
     </b-container>

@@ -1,8 +1,8 @@
 {
-  "name": "verificator-api",
+  "name": "smart-contract-verifier-api",
   "version": "1.0.0",
-  "description": "ReefScan contract verificator API",
-  "author": "Mario Pino Uceda",
+  "description": "snapr smart contract verifier api",
+  "author": "snapr developers <https://snapr.org>",
   "license": "Apache-2.0",
   "main": "index.js",
   "scripts": {

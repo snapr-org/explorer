@@ -1,6 +1,6 @@
-# Reef explorer
+# snapr explorer
 
-Open source block explorer for [Reef Finance](https://reef.finance) hosted at [https://reefscan.com](https://reefscan.com)
+Open source block explorer for [snapr](https://snapr.org) hosted at [https://explorer.snapr.com](https://explorer.snapr.com)
 
 ## Dependencies
 
@@ -11,8 +11,8 @@ You will need `nodejs` and `yarn`, `docker` and `docker-compose`.
 Install mono-repo:
 
 ```bash
-git clone https://github.com/reef-defi/reef-explorer.git
-cd reef-explorer
+git clone https://github.com/snapr-org/explorer.git
+cd explorer
 yarn
 ```
 
@@ -60,9 +60,9 @@ yarn workspace backend docker:mainnet
 yarn workspace backend docker:testnet
 ```
 
-#### Clean dockers
+#### Clean docker containers
 
-Clean all docker containers and related images and persistent volumens except those related to `substrate-node`.
+Clean all docker containers and related images and persistent volumes except those related to `substrate-node`.
 
 ```bash
 yarn workspace backend docker:clean
@@ -76,13 +76,13 @@ Create PostgreSQL database backup:
 docker:postgres:backup
 ```
 
-#### Create Reef-node blockchain database backup
+#### Create snapr blockchain database backup
 
 ```bash
 bash docker/backend/scripts/backup.sh
 ```
 
-#### Restore Reef-node database backup
+#### Restore snapr blockchain database backup
 
 ```bash
 bash docker/backend/scripts/restore-backup.sh

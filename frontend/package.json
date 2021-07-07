@@ -1,8 +1,8 @@
 {
   "name": "frontend",
   "version": "1.0.0",
-  "description": "Reef explorer frontend",
-  "author": "Mario Pino Uceda",
+  "description": "snapr explorer frontend",
+  "author": "snapr developers <https://snapr.org>",
   "license": "Apache-2.0",
   "scripts": {
     "dev": "nuxt",

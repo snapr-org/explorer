@@ -11,9 +11,9 @@
         </b-row>
         <div class="verify-contract">
           <b-alert show>
-            Source code verification provides <strong>transparency</strong> for
-            users interacting with REEF smart contracts. By uploading the source
-            code, ReefScan will match the compiled code with that on the
+            source code verification provides <strong>transparency</strong> for
+            users interacting with snapr smart contracts. by uploading the source
+            code, snapr explorer will match the compiled code with that on the
             blockchain, allowing the users to audit the code to independently
             verify that it actually does what it is supposed to do.
           </b-alert>
@@ -37,13 +37,12 @@
                   <b-form-text id="source-help">
                     <ul>
                       <li>
-                        <font-awesome-icon icon="arrow-right" /> Multiple source
+                        <font-awesome-icon icon="arrow-right" /> multiple source
                         files should be combined in one single file using
-                        <a
-                          href="https://github.com/reef-defi/reef-merger"
-                          target="_blank"
-                          >reef-merger</a
-                        >.
+                        <a href="https://github.com/snapr-org/merger"
+                           target="_blank">
+                          merger
+                        </a>.
                       </li>
                       <li>
                         <font-awesome-icon icon="arrow-right" />
@@ -3997,7 +3996,7 @@ export default {
         // generate recaptcha token
         const token = await this.$recaptcha.getResponse()
 
-        // call verificator-api
+        // call smart-contract-verifier-api
         const vm = this
         const formData = new FormData()
         formData.append('source', vm.source)
@@ -4009,7 +4008,7 @@ export default {
         formData.append('license', vm.license)
         formData.append('token', token)
         this.$axios
-          .post(network.verificatorApi + '/request', formData, {
+          .post(network.smartContractVerifierApi + '/request', formData, {
             onUploadProgress(progressEvent) {
               vm.uploadPercentage = Math.round(
                 (progressEvent.loaded * 100) / progressEvent.total
