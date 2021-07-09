@@ -8,10 +8,10 @@ const fetch = require('node-fetch');
 const { Pool } = require('pg');
 
 const postgresConnParams = {
-  user: process.env.POSTGRES_USER || 'snapr',
+  user: process.env.POSTGRES_USER || 'reef',
   host: process.env.POSTGRES_HOST || 'postgres',
-  database: process.env.POSTGRES_DATABASE || 'snapr',
-  password: process.env.POSTGRES_PASSWORD || 'snapr',
+  database: process.env.POSTGRES_DATABASE || 'reef',
+  password: process.env.POSTGRES_PASSWORD || 'reef',
   port: process.env.POSTGRES_PORT || 5432,
 };
 
@@ -44,7 +44,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(morgan('dev'));
 
-app.post('/api/smart-contract-verifier/request', async (req, res) => {
+app.post('/api/verificator/request', async (req, res) => {
   try {
     if(!req.files || !req.body.token || !req.body.address || !req.body.compilerVersion || !req.body.optimization || !req.body.optimization || !req.body.runs || !req.body.target || !req.body.license) {
       res.send({
@@ -152,7 +152,7 @@ app.post('/api/smart-contract-verifier/request', async (req, res) => {
   }
 });
 
-app.post('/api/smart-contract-verifier/untrusted-request', async (req, res) => {
+app.post('/api/verificator/untrusted-request', async (req, res) => {
   try {
     if(!req.files || !req.body.address || !req.body.compilerVersion || !req.body.optimization || !req.body.optimization || !req.body.runs || !req.body.target || !req.body.license) {
       res.send({
@@ -248,7 +248,7 @@ app.post('/api/smart-contract-verifier/untrusted-request', async (req, res) => {
   }
 });
 
-app.post('/api/smart-contract-verifier/request-status', async (req, res) => {
+app.post('/api/verificator/request-status', async (req, res) => {
   if(!req.params.id) {
     res.send({
       status: false,
@@ -307,5 +307,5 @@ app.use(express.static('uploads'));
 
 // Start app
 app.listen(port, () => 
-  console.log(`smart contract verifier api is listening on port ${port}.`)
+  console.log(`Contract verificator API is listening on port ${port}.`)
 );

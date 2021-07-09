@@ -1,14 +1,15 @@
 require('dotenv').config();
 
 module.exports = {
-  substrateNetwork: process.env.SUBSTRATE_NETWORK || 'snapr',
-  wsProviderUrl: process.env.WS_PROVIDER_URL || 'ws://substrate-node:9944',
-  postgresConnParams: {
-    user: process.env.POSTGRES_USER || 'snapr',
-    host: process.env.POSTGRES_HOST || 'postgres',
-    database: process.env.POSTGRES_DATABASE || 'snapr',
-    password: process.env.POSTGRES_PASSWORD || 'snapr',
-    port: process.env.POSTGRES_PORT || 5432,
+  //evidence of use not found
+  //substrateNetwork: process.env.SUBSTRATE_NETWORK || 'snapr',
+  wsProviderUrl: process.env.WS_PROVIDER_URL || 'wss://ford.snapr.net',
+  dbConnectionParameters: {
+    user: process.env.DB_USER || 'snapr',
+    host: process.env.DB_HOST || 'mysql',
+    database: process.env.DB_SCHEMA || 'snapr',
+    password: process.env.DB_PASSWORD || 'snapr',
+    port: process.env.DB_PORT || 5432,
   },
   crawlers: [
     {

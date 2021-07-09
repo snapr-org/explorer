@@ -2,22 +2,21 @@
 let solc = require("solc");
 const pino = require('pino');
 const logger = pino();
-const { Client } = require('pg');
 require('dotenv').config();
 const loggerOptions = {};
 
 // Configuration
 const pollingTime = 30 * 1000; // 30 seconds
-const postgresConnParams = {
-  user: process.env.POSTGRES_USER || 'snapr',
-  host: process.env.POSTGRES_HOST || 'postgres',
-  database: process.env.POSTGRES_DATABASE || 'snapr',
-  password: process.env.POSTGRES_PASSWORD || 'snapr',
-  port: parseInt(process.env.POSTGRES_PORT) || 5432,
+const dbConnectionParameters = {
+  user: process.env.DB_USER || 'snapr',
+  host: process.env.DB_HOST || 'mysql',
+  schema: process.env.DB_SCHEMA || 'snapr',
+  password: process.env.DB_PASSWORD || 'snapr',
+  port: parseInt(process.env.DB_PORT) || 3306,
 };
 
 const getClient = async () => {
-  const client = new Client(postgresConnParams);
+  const client = new Client(dbConnectionParameters);
   await client.connect();
   return client;
 };

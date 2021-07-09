@@ -4,7 +4,6 @@
       <b-navbar-brand>
         <nuxt-link to="/" class="navbar-brand" title="snapr block explorer">
           <img class="logo" src="/img/u2665-ad2d6f.svg" />
-          <span class="explorer">SCAN</span>
         </nuxt-link>
       </b-navbar-brand>
       <a

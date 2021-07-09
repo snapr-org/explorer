@@ -29,8 +29,8 @@ services:
       - 'db-data:/var/lib/postgresql/data'
       - './sql/backend.sql:/docker-entrypoint-initdb.d/backend.sql'
     environment:
-      POSTGRES_USER: 'snapr'
-      POSTGRES_PASSWORD: 'snapr'
+      DB_USER: 'snapr'
+      DB_PASSWORD: 'snapr'
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U snapr']
       interval: 5s

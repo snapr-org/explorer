@@ -17,7 +17,12 @@
     "url": "https://github.com/snapr-org/explorer/issues"
   },
   "homepage": "https://github.com/snapr-org/explorer#readme",
-  "workspaces": ["frontend", "backend", "smart-contract-verifier-api", "smart-contract-verifier"],
+  "workspaces": [
+    "frontend",
+    "backend",
+    "smart-contract-verifier-api",
+    "smart-contract-verifier"
+  ],
   "scripts": {}
  }
  

@@ -14,20 +14,20 @@ class Backend {
   }
 
   async runCrawlers() {
-    logger.info('Starting backend, waiting 15s...');
+    logger.info('starting backend, waiting 15s...');
     await wait(15000);
 
     const pool = await this.getPool();
 
-    let api = await this.getPolkadotAPI();
+    let api = await this.getChainWsProvider();
     while (!api) {
       // eslint-disable-next-line no-await-in-loop
       await wait(10000);
       // eslint-disable-next-line no-await-in-loop
-      api = await this.getPolkadotAPI();
+      api = await this.getChainWsProvider();
     }
 
-    logger.info('Running crawlers');
+    logger.info('running crawlers');
 
     this.config.crawlers
       .filter((crawler) => crawler.enabled)
@@ -36,26 +36,27 @@ class Backend {
           this.config.wsProviderUrl,
           pool,
           crawler.config,
-          this.config.substrateNetwork,
+          //evidence of use not found
+          //this.config.substrateNetwork,
         ),
       );
   }
 
-  async getPolkadotAPI() {
-    logger.info(`Connecting to ${this.config.wsProviderUrl}`);
+  async getChainWsProvider() {
+    logger.info(`connecting to ${this.config.wsProviderUrl}`);
 
     const provider = new WsProvider(this.config.wsProviderUrl);
     const api = await ApiPromise.create({ provider, types });
     await api.isReady;
 
-    logger.info('API is ready!');
+    logger.info(`api (${this.config.wsProviderUrl}) is ready`);
 
-    // Wait for node is synced
+    // wait for node is synced
     let node;
     try {
       node = await api.rpc.system.health();
     } catch {
-      logger.error("Can't connect to node! Waiting 10s...");
+      logger.error("can't connect to node! waiting 10s...");
       api.disconnect();
       await wait(10000);
       return false;
@@ -64,12 +65,12 @@ class Backend {
     logger.info(`Node: ${JSON.stringify(node)}`);
 
     if (node && node.isSyncing.eq(false)) {
-      // Node is synced!
-      logger.info('Node is synced!');
+      // node is synced!
+      logger.info('node is synced!');
       this.nodeisSyncing = false;
       return api;
     }
-    logger.warn('Node is not synced! Waiting 10s...');
+    logger.warn('node is not synced! waiting 10s...');
     api.disconnect();
     await wait(10000);
 
@@ -77,7 +78,7 @@ class Backend {
   }
 
   async getPool() {
-    const pool = new Pool(this.config.postgresConnParams);
+    const pool = new Pool(this.config.dbConnectionParameters);
     await pool.connect();
     return pool;
   }

@@ -29,8 +29,8 @@ services:
       - 'db-data:/var/lib/postgresql/data'
       - './sql/backend.sql:/docker-entrypoint-initdb.d/backend.sql'
     environment:
-      POSTGRES_USER: 'snapr'
-      POSTGRES_PASSWORD: 'snapr'
+      DB_USER: 'snapr'
+      DB_PASSWORD: 'snapr'
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U snapr']
       interval: 5s
@@ -47,7 +47,7 @@ services:
       - 'postgres'
     restart: always
     environment:
-      HASURA_GRAPHQL_DATABASE_URL: postgres://snapr:snapr@postgres:5432/snapr
+      HASURA_GRAPHQL_DATABASE_URL: mysql://snapr:snapr@mysql:3306/snapr
       HASURA_GRAPHQL_ENABLE_CONSOLE: 'false' # set to "false" to disable console
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
       ## uncomment next line to set an admin secret
